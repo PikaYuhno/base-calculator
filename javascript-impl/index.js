@@ -54,5 +54,16 @@ const DecToBin = (input) => {
     return binary.split("").reverse().join("");
 };
 
+const DecToBase = (input,base) => {
+    let number = "";
+    while (input > base) {
+        number += input % base;
+        input = Math.floor(input / base);
+    }
+    number += input % base;
+
+    return number.split("").reverse().join("");
+};
+
 //console.log(binToDec("11011011"));
 //eonsole.log(DecToBin(598));
