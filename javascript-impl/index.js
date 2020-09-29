@@ -1,28 +1,8 @@
-/**const binToDec = (input) => {
-    let splitted = input.split(".");
-    if (splitted.length === 1) {
-        let decimal = 0;
-        let arr = input.split("");
-        for (let i = 0; i < arr.length; i++) {
-            decimal += arr[i] * 2 ** i;
-        }
-        return decimal;
-    }
-
-    let positiv = splitted[0];
-    let negativ = splitted[1];
-
-    let positivDec = 0;
-    let negativDec = 0;
-    for (let i = 0; i < positiv.length; i--) {
-        positivDec += positiv[i] * 2 ** (positiv.length - i - 1);
-    }
-    for (let i = 0; i < negativ.length; i++) {
-        negativDec += negativ[i] * 2 ** ((i + 1) * -1);
-    }
-    return positivDec + negativDec;
-};*/
-
+/**
+ * This function converts any base that is smaller than 10 to a number.
+ * @param {number} input - The input number.
+ * @param {number} base - The base.
+ */
 const baseToNumber = (input, base) => {
     const splitted = input.split(".");
     const characteristicPart = splitted[0];
@@ -37,24 +17,14 @@ const baseToNumber = (input, base) => {
     return number / base ** mantissaPart.length;
 };
 
-console.log(baseToNumber("101111", 2));
-
-const DecToBin = (input) => {
-    let splitted = input.split(".");
-    const characteristicPart = splitted[0];
-    const mantissaPart = splitted[1] || "";
-
-    let binary = "";
-    while (input != 1) {
-        binary += input % 2;
-        input = Math.floor(input / 2);
-    }
-    binary += input % 2;
-
-    return binary.split("").reverse().join("");
-};
-
-const DecToBase = (input,base) => {
+/**
+ * This function converts a number to any base that is smaller than 10.
+ * @param {number} input - The input number.
+ * @param {number} base - The base.
+ */
+//TODO
+// + Convert number with decimal part.
+const numberToBase = (input, base) => {
     let number = "";
     while (input > base) {
         number += input % base;
@@ -64,6 +34,3 @@ const DecToBase = (input,base) => {
 
     return number.split("").reverse().join("");
 };
-
-//console.log(binToDec("11011011"));
-//eonsole.log(DecToBin(598));
