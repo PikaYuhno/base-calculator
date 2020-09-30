@@ -1,3 +1,12 @@
+//TODO: Change the name to something more appropriate.
+let map = {
+    A: 10,
+    B: 11,
+    C: 12,
+    D: 13,
+    E: 14,
+    F: 15,
+};
 /**
  * This function converts any base that is smaller than 10 to a number.
  * @param {number} input - The input number.
@@ -11,6 +20,11 @@ const baseToNumber = (input, base) => {
     const shiftedInput = characteristicPart + mantissaPart;
     let number = 0;
     for (let i = 0; i < shiftedInput.length; i++) {
+        if (isNaN(shiftedInput[i])) {
+            number +=
+                map[shiftedInput[i]] * base ** (shiftedInput.length - i - 1);
+            continue;
+        }
         number += shiftedInput[i] * base ** (shiftedInput.length - i - 1);
     }
 
@@ -37,12 +51,12 @@ const numberToBase = (input, base) => {
 
     let secnumber = "";
     while (mantissaPart % 1 != 0) {
-        mantissaPart*=base;
+        mantissaPart *= base;
         secnumber += Math.floor(mantissaPart);
         mantissaPart = mantissaPart - Math.floor(mantissaPart);
     }
     secnumber += Math.floor(mantissaPart);
 
     number = number.split("").reverse().join("");
-    return number+"."+secnumber;
+    return number + "." + secnumber;
 };
