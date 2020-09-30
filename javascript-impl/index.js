@@ -26,7 +26,7 @@ const baseToNumber = (input, base) => {
 // + Convert number with decimal part.
 const numberToBase = (input, base) => {
     let number = "";
-    while (input > base) {
+    while (input >= base) {
         number += input % base;
         input = Math.floor(input / base);
     }
