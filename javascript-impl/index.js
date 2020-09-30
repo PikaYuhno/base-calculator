@@ -25,12 +25,24 @@ const baseToNumber = (input, base) => {
 //TODO
 // + Convert number with decimal part.
 const numberToBase = (input, base) => {
-    let number = "";
-    while (input >= base) {
-        number += input % base;
-        input = Math.floor(input / base);
-    }
-    number += input % base;
+    let characteristicPart = Math.floor(input);
+    let mantissaPart = input - Math.floor(input);
 
-    return number.split("").reverse().join("");
+    let number = "";
+    while (characteristicPart >= base) {
+        number += characteristicPart % base;
+        characteristicPart = Math.floor(characteristicPart / base);
+    }
+    number += characteristicPart % base;
+
+    let secnumber = "";
+    while (mantissaPart % 1 != 0) {
+        mantissaPart*=base;
+        secnumber += Math.floor(mantissaPart);
+        mantissaPart = mantissaPart - Math.floor(mantissaPart);
+    }
+    secnumber += Math.floor(mantissaPart);
+
+    number = number.split("").reverse().join("");
+    return number+"."+secnumber;
 };
