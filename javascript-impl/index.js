@@ -60,3 +60,47 @@ const numberToBase = (input, base) => {
     number = number.split("").reverse().join("");
     return number + "." + secnumber;
 };
+
+const numberAddition = (input1,input2,base) => {
+    let splitted1 = input1.split(".");
+    let splitted2 = input2.split(".");
+
+    if(splitted1[1].length<splitted2[1].length){
+        [input1,input2] = [input2,input1];
+        [splitted1,splitted2] = [splitted2,splitted1];
+    }
+
+    for(var i=0;i<splitted1[1].length-splitted2[1].length;i++){
+        input2+="0";
+    }
+
+    if(splitted1[0].length<splitted2[0].length){
+        [input1,input2] = [input2,input1];
+        [splitted1,splitted2] = [splitted2,splitted1];
+    }
+
+    for(var i=0;i<splitted1[0].length-splitted2[0].length;i++){
+        input2 = "0" + input2;
+    }
+
+    let result="";
+    let transfer=0;
+    for(var i=input1.length-1;i>=0;i--){
+        if(input1[i]=="."){
+            result+=".";
+            continue;
+        }
+
+        var num1=parseInt(input1[i]);
+        var num2=parseInt(input2[i]);
+
+        result+=""+((num1+num2+transfer)%base);
+        transfer=Math.floor((num1+num2+transfer)/base);
+    }
+
+    if(transfer!=0){
+        result+=""+transfer;
+    }
+
+    return result.split("").reverse().join("");
+};
