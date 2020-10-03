@@ -104,3 +104,68 @@ const numberAddition = (input1,input2,base) => {
 
     return result.split("").reverse().join("");
 };
+
+const NumberSubtraction = (input1,input2,base) => {
+    let copy1=input1;
+
+    let splitted1 = input1.split(".");
+    let splitted2 = input2.split(".");
+
+    if(splitted1[1].length<splitted2[1].length){
+        [input1,input2] = [input2,input1];
+        [splitted1,splitted2] = [splitted2,splitted1];
+    }
+
+    for(var i=0;i<splitted1[1].length-splitted2[1].length;i++){
+        input2+="0";
+    }
+
+    if(splitted1[0].length<splitted2[0].length){
+        [input1,input2] = [input2,input1];
+        [splitted1,splitted2] = [splitted2,splitted1];
+    }
+
+    for(var i=0;i<splitted1[0].length-splitted2[0].length;i++){
+        input2 = "0" + input2;
+    }
+
+    if(!input1.includes(copy1)){
+        [input1,input2] = [input2,input1];
+    }
+
+    let result="";
+    let transfer=0;
+    let temp=0;
+    let minus="";
+
+    if(parseFloat(input1)<parseFloat(input2)){
+        [input1,input2] = [input2,input1];
+        minus="-";
+    }
+
+    for(var i=input1.length-1;i>=0;i--){
+        if(input1[i]=="."){
+            result+=".";
+            continue;
+        }
+
+        var num1=parseInt(input1[i]);
+        var num2=parseInt(input2[i]);
+
+        if(num1<num2+transfer){
+            num1+=base;
+            temp=1;
+        }
+
+        result+=""+num1-(num2+transfer);
+        transfer=temp;
+        temp=0;
+    }
+
+    result=result.split("").reverse().join("");
+
+    if(minus=="-"){
+        return minus+result.substring(1);
+    }
+    return result;
+};
