@@ -7,8 +7,8 @@ let add = (input1, input2, base) => {
 
     let num1 = rev(splitted1[0]);
     let num2 = rev(splitted2[0]);
-    let decimal1 = splitted1[1];
-    let decimal2 = splitted2[1];
+    let decimal1 = splitted1[1] || "";
+    let decimal2 = splitted2[1] || "";
 
     let len = num1.length > num2.length ? num1.length : num2.length;
     let decLen =
