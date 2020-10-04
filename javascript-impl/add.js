@@ -1,7 +1,12 @@
 let add = (input1, input2, base) => {
     const rev = (s) => s.split("").reverse().join("");
-    //Input1 = 125124.124
-    //Input2 =   2131.2
+    const calc = (input1, input2, oldCarry, base) => {
+        let number = (parseInt(input1) + parseInt(input2) + oldCarry) % base;
+        let carry = Math.floor(
+            (parseInt(input1) + parseInt(input2) + oldCarry) / base
+        );
+        return { number, carry };
+    };
     let splitted1 = input1.split(".");
     let splitted2 = input2.split(".");
 
@@ -10,39 +15,42 @@ let add = (input1, input2, base) => {
     let decimal1 = splitted1[1] || "";
     let decimal2 = splitted2[1] || "";
 
-    let len = num1.length > num2.length ? num1.length : num2.length;
-    let decLen =
-        decimal1.length > decimal2.length ? decimal1.length : decimal2.length;
+    let numLen = Math.max(num1.length, num2.length);
+    let decLen = Math.max(decimal1.length, decimal2.length);
 
-    console.log(`Num1: ${num1}, Dec1: ${decimal1}`);
-    console.log(`Num2: ${num2}, Dec2: ${decimal2}`);
+    let carry = 0;
 
-    let carry2 = 0;
-    let result2 = "";
+    let decimalPart = "";
     for (let i = decLen - 1; i >= 0; i--) {
         let n1 = decimal1[i] || 0;
         let n2 = decimal2[i] || 0;
-        let n = (parseInt(n1) + parseInt(n2) + carry2) % base;
-        result2 += n;
-        console.log(`${n1} + ${n2} + ${carry2} = ${n}`);
-        carry2 = Math.floor((parseInt(n1) + parseInt(n2) + carry2) / base);
+        let r = calc(n1, n2, carry, base);
+        decimalPart += r.number;
+        //console.log(`${n1} + ${n2} + ${carry2} = ${n}`);
+        carry = r.carry;
     }
-    console.log("-----------------------");
+    //console.log("-----------------------");
 
-    let carry = carry2;
-    let result = "";
-    for (let i = 0; i < len; i++) {
+    let wholePart = "";
+    for (let i = 0; i < numLen; i++) {
         let n1 = num1[i] || 0;
         let n2 = num2[i] || 0;
-        let n = (parseInt(n1) + parseInt(n2) + carry) % base;
-        result += n;
-        console.log(`${n1} + ${n2} + ${carry} = ${n}`);
-        carry = Math.floor((parseInt(n1) + parseInt(n2) + carry) / base);
+        let r = calc(n1, n2, carry, base);
+        wholePart += r.number;
+        //console.log(`${n1} + ${n2} + ${carry} = ${n}`);
+        carry = r.carry;
     }
-    if (carry != 0) result += carry;
+    if (carry != 0) wholePart += carry;
 
-    result = rev(result);
-    result2 = rev(result2);
-
-    return `${result}.${result2}`;
+    return `${rev(wholePart)}.${rev(decimalPart)}`;
 };
+
+const addition = (inputs, base) => {
+    let oldResult = add(inputs[0], inputs[1], base);
+    for (let i = 2; i < inputs.length; i++) {
+        oldResult = add(oldResult, inputs[i], base);
+    }
+    return oldResult;
+};
+
+console.log(addition(["15.2", "15.2", "15.2", "15.2"], 10));
