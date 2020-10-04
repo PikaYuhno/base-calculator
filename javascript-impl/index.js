@@ -169,3 +169,36 @@ const NumberSubtraction = (input1,input2,base) => {
     }
     return result;
 };
+
+const numberDivision = (input1,input2,base) => {
+
+    let number="";
+    let result="";
+
+    for(var i=0;i<input1.length;i++){
+        number+=""+input1[i];
+
+        if(input1[i]=="."){
+            result+=".";
+            continue;
+        }
+
+
+        if(parseFloat(number)>=input2){
+            let divisor=input2;
+            let a=1;
+            let previous=input2;
+            while(parseFloat(number)>divisor){
+                previous=divisor;
+                divisor=numberAddition(divisor+".",input2+".",base);
+                a++;
+            }
+            number=numberSubtraction(number+".",previous+".",base);
+    
+            result+=""+a;
+        }
+    }
+
+
+    return result;
+};
