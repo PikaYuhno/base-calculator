@@ -3,6 +3,7 @@
 ### TODO
 
 - [ ] `NumberToBase: base 11 -> base 16`
+- [ ] `NumberToBase: inaccurate decimal part`
 - [ ] `Addition: base 11 -> base 16`
 - [ ] `Substraction: base 11 -> base 16`
 - [ ] `Multiplication: base 11 -> base 16`
