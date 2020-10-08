@@ -60,8 +60,8 @@ const numberToBase = (input, base) => {
 };
 
 const numberAddition = (input1, input2, base) => {
-    let splitted1 = input1.split(".");
-    let splitted2 = input2.split(".");
+    let splitted1 = input1.includes(".") ? input1.split(".") : [input1,""];
+    let splitted2 = input1.includes(".") ? input2.split(".") : [input2,""];
 
     if (splitted1[1].length < splitted2[1].length) {
         [input1, input2] = [input2, input1];
@@ -106,8 +106,8 @@ const numberAddition = (input1, input2, base) => {
 const NumberSubtraction = (input1, input2, base) => {
     let copy1 = input1;
 
-    let splitted1 = input1.split(".");
-    let splitted2 = input2.split(".");
+    let splitted1 = input1.includes(".") ? input1.split(".") : [input1,""];
+    let splitted2 = input1.includes(".") ? input2.split(".") : [input2,""];
 
     if (splitted1[1].length < splitted2[1].length) {
         [input1, input2] = [input2, input1];
