@@ -26,10 +26,10 @@ let add = (input1, input2, base) => {
         let n2 = decimal2[i] || 0;
         let r = calc(n1, n2, carry, base);
         decimalPart += r.number;
-        //console.log(`${n1} + ${n2} + ${carry2} = ${n}`);
+        console.log(`${n1} + ${n2} + ${carry2} = ${r.number}`);
         carry = r.carry;
     }
-    //console.log("-----------------------");
+    console.log("-----------------------");
 
     let wholePart = "";
     for (let i = 0; i < numLen; i++) {
@@ -37,7 +37,7 @@ let add = (input1, input2, base) => {
         let n2 = num2[i] || 0;
         let r = calc(n1, n2, carry, base);
         wholePart += r.number;
-        //console.log(`${n1} + ${n2} + ${carry} = ${n}`);
+        console.log(`${n1} + ${n2} + ${carry} = ${r.number}`);
         carry = r.carry;
     }
     if (carry != 0) wholePart += carry;
@@ -53,4 +53,9 @@ const addition = (inputs, base) => {
     return oldResult;
 };
 
-console.log(addition(["15.2", "15.2", "15.2", "15.2"], 10));
+//console.log(add("002", "001", 10));
+
+module.exports = {
+    addition,
+};
+//console.log(addition(["15.2", "15.2", "15.2", "15.2"], 10));
