@@ -186,10 +186,10 @@ const numberDivision = (input1, input2, base) => {
             let previous = input2;
             while (parseFloat(number) > divisor) {
                 previous = divisor;
-                divisor = numberAddition(divisor + ".", input2 + ".", base);
+                divisor = numberAddition(divisor, input2, base);
                 a++;
             }
-            number = numberSubtraction(number + ".", previous + ".", base);
+            number = numberSubtraction(number, previous, base);
 
             result += "" + a;
         }
