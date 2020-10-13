@@ -1,4 +1,21 @@
 const { addition } = require("./add");
+
+//TODO: Change the name to something more appropriate.
+let map = {
+    A: 10,
+    B: 11,
+    C: 12,
+    D: 13,
+    E: 14,
+    F: 15,
+    10: "A",
+    11: "B",
+    12: "C",
+    13: "D",
+    14: "E",
+    15: "F",
+};
+
 const multi = (input1, input2, base) => {
     let splitted1 = input1.split(".");
     let splitted2 = input2.split(".");
@@ -22,13 +39,17 @@ const multi = (input1, input2, base) => {
     for (let i = 0; i < len; i++) {
         let numberStr = "";
         for (let j = len2 - 1; j >= 0 || carry !== 0; j--) {
+            console.log("Test", map[in1[i]]);
             let calculation =
-                parseInt(in1[i]) * (parseInt(in2[j]) || 0) + carry;
+                (isNaN(in1[i]) ? map[in1[i]] : parseInt(in1[i])) *
+                    (isNaN(in2[j]) ? map[in2[j]] || 0 : parseInt(in2[j]) || 0) +
+                carry;
             let number = calculation % base;
+            number = number >= 10 ? map[number] : number;
             console.log(
-                `Calc: ${parseInt(in1[i])} * ${parseInt(
-                    in2[j] || 0
-                )} + ${carry} = ${calculation}, Result: ${number}, Carry: ${Math.floor(
+                `Calc: ${isNaN(in1[i]) ? map[in1[i]] : parseInt(in1[i])} * ${
+                    isNaN(in2[j]) ? map[in2[j]] || 0 : parseInt(in2[j]) || 0
+                } + ${carry} = ${calculation}, Result: ${number}, Carry: ${Math.floor(
                     calculation / base
                 )}`
             );
@@ -45,9 +66,12 @@ const multi = (input1, input2, base) => {
     }
     console.log("After -- Results:", results);
     let res = addition(results, base);
-    console.log("Final Result:", parseInt(res) / base ** shiftNumber);
+    console.log(
+        "Final Result:",
+        (parseInt(res, base) / base ** shiftNumber).toString(base).toUpperCase()
+    );
 };
 
 //multi("4567", "345", 8);
 //multi("456.7", "3.45", 10);
-multi("12.5", "30", 10);
+multi("ABB", "A", 16);
