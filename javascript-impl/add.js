@@ -1,25 +1,14 @@
 //TODO: Change the name to something more appropriate.
-/**let map = {
-    A: 10,
-    B: 11,
-    C: 12,
-    D: 13,
-    E: 14,
-    F: 15,
-    10: "A",
-    11: "B",
-    12: "C",
-    13: "D",
-    14: "E",
-    15: "F",
-}*/
+let map = {};
+function* range(start, stop) {
+    for (let n = start; n < stop; n++) yield n;
+}
 let chars = String.fromCharCode(
     ...range(65, 65 + 26),
     ...range(97, 97 + 26),
     43,
     47
 );
-let map = {};
 for (let i = 10; i < chars.length + 10; i++) {
     map[i] = chars[i - 10];
     map[chars[i - 10]] = i;
@@ -97,3 +86,4 @@ module.exports = {
 };
 //console.log(addition(["15.2", "15.2", "15.2", "15.2"], 10));
 //console.log(addition(["6E0", "6E"], 16));
+console.log(addition(["+", "+"], 64));
