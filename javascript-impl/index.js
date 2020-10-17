@@ -1,12 +1,18 @@
 //TODO: Change the name to something more appropriate.
-let map = {
-    A: 10,
-    B: 11,
-    C: 12,
-    D: 13,
-    E: 14,
-    F: 15,
-};
+function* range(start, stop) {
+    for (let n = start; n < stop; n++) yield n;
+}
+let chars = String.fromCharCode(
+    ...range(65, 65 + 26),
+    ...range(97, 97 + 26),
+    43,
+    47
+);
+let map = {};
+for (let i = 10; i < chars.length + 10; i++) {
+    map[chars[i - 10]] = i;
+    map[i] = chars[i - 10];
+}
 /**
  * This function converts any base that is smaller than 10 to a number.
  * @param {number} input - The input number.
@@ -30,6 +36,9 @@ const baseToNumber = (input, base) => {
 
     return number / base ** mantissaPart.length;
 };
+
+console.log(map);
+console.log(baseToNumber("++", 64));
 
 /**
  * This function converts a number to any base that is smaller than 10.
@@ -60,8 +69,8 @@ const numberToBase = (input, base) => {
 };
 
 const numberAddition = (input1, input2, base) => {
-    let splitted1 = input1.includes(".") ? input1.split(".") : [input1,""];
-    let splitted2 = input1.includes(".") ? input2.split(".") : [input2,""];
+    let splitted1 = input1.includes(".") ? input1.split(".") : [input1, ""];
+    let splitted2 = input1.includes(".") ? input2.split(".") : [input2, ""];
 
     if (splitted1[1].length < splitted2[1].length) {
         [input1, input2] = [input2, input1];
@@ -106,8 +115,8 @@ const numberAddition = (input1, input2, base) => {
 const NumberSubtraction = (input1, input2, base) => {
     let copy1 = input1;
 
-    let splitted1 = input1.includes(".") ? input1.split(".") : [input1,""];
-    let splitted2 = input1.includes(".") ? input2.split(".") : [input2,""];
+    let splitted1 = input1.includes(".") ? input1.split(".") : [input1, ""];
+    let splitted2 = input1.includes(".") ? input2.split(".") : [input2, ""];
 
     if (splitted1[1].length < splitted2[1].length) {
         [input1, input2] = [input2, input1];

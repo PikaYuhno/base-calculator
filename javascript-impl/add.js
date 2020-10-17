@@ -1,5 +1,5 @@
 //TODO: Change the name to something more appropriate.
-let map = {
+/**let map = {
     A: 10,
     B: 11,
     C: 12,
@@ -12,7 +12,18 @@ let map = {
     13: "D",
     14: "E",
     15: "F",
-};
+}*/
+let chars = String.fromCharCode(
+    ...range(65, 65 + 26),
+    ...range(97, 97 + 26),
+    43,
+    47
+);
+let map = {};
+for (let i = 10; i < chars.length + 10; i++) {
+    map[i] = chars[i - 10];
+    map[chars[i - 10]] = i;
+}
 
 /**
  * This function adds input1 to input2 in any base that is smaller than 17
@@ -85,4 +96,4 @@ module.exports = {
     addition,
 };
 //console.log(addition(["15.2", "15.2", "15.2", "15.2"], 10));
-console.log(addition(["6E0", "6E"], 16));
+//console.log(addition(["6E0", "6E"], 16));
