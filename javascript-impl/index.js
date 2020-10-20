@@ -176,7 +176,7 @@ const numberSubtraction = (input1,input2,base) => {
     result=result.split("").reverse().join("");
 
     if(minus=="-"){
-        return input1.match(/[A-F]/) || input2.match(/[A-F]/) ? minus+result : minus+result.substring(1);
+        return input1.match(/[A-z]/) || input2.match(/[A-z]/) ? minus+result : minus+result.substring(1);
     }
     
     return result;
