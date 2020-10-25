@@ -5,7 +5,7 @@ import { map } from "./bases.js";
  * @param {string} input2 - The input2.
  * @param {number} base - The base.
  */
-export const add = (input1, input2, base) => {
+export let add = (input1, input2, base) => {
     const rev = (s) => s.split("").reverse().join("");
     const calc = (input1, input2, oldCarry, base) => {
         input1 = isNaN(input1) ? map[input1] : parseInt(input1);
@@ -62,51 +62,4 @@ export const addition = (inputs, base) => {
         console.log(`${cache} + ${inputs[i]} = ${oldResult}`);
     }
     return oldResult;
-};
-
-const numberAddition = (input1, input2, base) => {
-    let splitted1 = input1.includes(".") ? input1.split(".") : [input1, ""];
-    let splitted2 = input1.includes(".") ? input2.split(".") : [input2, ""];
-
-    if (splitted1[1].length < splitted2[1].length) {
-        [input1, input2] = [input2, input1];
-        [splitted1, splitted2] = [splitted2, splitted1];
-    }
-
-    for (var i = 0; i < splitted1[1].length - splitted2[1].length; i++) {
-        input2 += "0";
-    }
-
-    if (splitted1[0].length < splitted2[0].length) {
-        [input1, input2] = [input2, input1];
-        [splitted1, splitted2] = [splitted2, splitted1];
-    }
-
-    for (var i = 0; i < splitted1[0].length - splitted2[0].length; i++) {
-        input2 = "0" + input2;
-    }
-
-    let result = "";
-    let transfer = 0;
-    for (var i = input1.length - 1; i >= 0; i--) {
-        if (input1[i] == ".") {
-            result += ".";
-            continue;
-        }
-
-        var num1 = isNaN(input1[i]) ? map[input1[i]] : parseInt(input1[i]);
-        var num2 = isNaN(input2[i]) ? map[input2[i]] : parseInt(input2[i]);
-
-        result +=
-            (num1 + num2 + transfer) % base < 10
-                ? "" + ((num1 + num2 + transfer) % base)
-                : map[(num1 + num2 + transfer) % base];
-        transfer = Math.floor((num1 + num2 + transfer) / base);
-    }
-
-    if (transfer != 0) {
-        result += "" + transfer;
-    }
-
-    return result.split("").reverse().join("");
 };

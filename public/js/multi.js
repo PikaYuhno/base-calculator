@@ -1,22 +1,7 @@
 import { addition } from "./add.js";
 import { map } from "./bases.js";
-//TODO: Change the name to something more appropriate.
-let map = {
-    A: 10,
-    B: 11,
-    C: 12,
-    D: 13,
-    E: 14,
-    F: 15,
-    10: "A",
-    11: "B",
-    12: "C",
-    13: "D",
-    14: "E",
-    15: "F",
-};
 
-const multi = (input1, input2, base) => {
+export const multi = (input1, input2, base) => {
     let splitted1 = input1.split(".");
     let splitted2 = input2.split(".");
 
@@ -71,7 +56,3 @@ const multi = (input1, input2, base) => {
         (parseInt(res, base) / base ** shiftNumber).toString(base).toUpperCase()
     );
 };
-
-//multi("4567", "345", 8);
-//multi("456.7", "3.45", 10);
-multi("ABB", "A", 16);

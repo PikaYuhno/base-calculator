@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basenrechner
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Basenrechner PogU</h1>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+           <div class="col-sm">
+            <div class="form-group">
+                <label for="demo_overview_minimal">Select a base</label>
+                <input list="hosting-plan" type="text" class="form-control">
+ 
+                <datalist id="hosting-plan">
+                </datalist>
+                </div>
+            </div>
+            <div class="col-sm">
+                        
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="demo_overview_minimal">Select a base</label>
+                    <input list="hosting-plan" class="form-control"type="text">
+     
+                    <datalist id="hosting-plan">
+                    </datalist>
+                    </div>
+            </div>
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item">Decimal</li>
+                    <li class="list-group-item">Binary</li>
+                    <li class="list-group-item">Octal</li>
+                    <li class="list-group-item">Hexadecimal</li>
+                    <li class="list-group-item">
+                        <textarea name="customBase" id="" cols="10" rows="1"></textarea>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm">  
+                <ul class="list-group">
+                <li class="list-group list-group-horizontal">
+                    <li class="list-group-item">Decimal</li>
+                </li>
+                <li class="list-group list-group-horizontal">
+                    <li class="list-group-item">Binary</li>
+                </li>
+                <li class="list-group list-group-horizontal">
+                    <li class="list-group-item">Octal</li>
+                </li>
+                <li class="list-group list-group-horizontal">
+                    <li class="list-group-item">Hexadecimal</li>
+                </li>
+                <li class="list-group list-group-horizontal">
+                    <li class="list-group-item">Custom</li>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div class="row" style="display: flex; justify-content: center; align-item: center;">
+            <div class="col-sm">
+
+                <div class="form-group">
+                    <label for="value1">Value:</label>
+                    <input type="text" class="form-control" id="value1">
+                </div>
+            </div>
+            <div class="col-sm">
+
+                <div class="form-group">
+                    <label for="demo_overview_minimal">Operator:</label>
+                    <input list="operators" class="form-control"type="text" id="operatorsInput">
+                    
+                    <datalist id="operators">
+                        <option value="+" selected="selected">+</option>
+                        <option value="-"></option>
+                        <option value="*"></option>
+                        <option value="/"></option>
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="demo_overview_minimal">Base:</label>
+                    <input list="hosting-plan" class="form-control"type="text" id="baseOperator">
+                    <datalist id="hosting-plan">
+                    </datalist>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info" id="submit">Submit</button>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group">
+                    <label for="value1">Value:</label>
+                    <input type="text" class="form-control" id="value2">
+                </div>
+            </div>
+            <div class="col-sm"></div>
+            <div class="col-sm"></div>
+        </div>
+    </div>
+    <script src="./js/index.js" type="module"></script>
+</body>
+</html>
