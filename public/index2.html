@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basenrechner
     </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="./js/index.js" type="module"></script>
 </head>
 
@@ -18,52 +21,104 @@
         <div class="row">
             <div class="col-md-8">
 
-                <div class="row">
-                    <div class="col-sm">
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#operation">Operation</a></li>
+                    <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#conversion">Conversion</a></li>
+                </ul>
+                
+                <div class="tab-content">
+                    <div id="operation" class="container tab-pane active"><br>
+                        <div class="row">
+                   
+                            <div class="col-sm">
+        
+                                <div class="form-group">
+                                    <label for="value1">Value:</label>
+                                    <input type="text" class="form-control" id="value1">
+                                </div>
+                            </div>
+                
+                            <div class="col-sm">
+                
+                                <div class="form-group">
+                                    <label for="operators">Operator:</label>
+                            
+                                    <select id="operators" class="form-control">
+                                        <option value="+" selected="selected">+</option>
+                                        <option value="-">-</option>
+                                        <option value="*">*</option>
+                                        <option value="/">/</option>
+                                    </select>
+                                </div>
+                            </div>
+                
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="value2">Value:</label>
+                                    <input type="text" class="form-control" id="value2">
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="row">
+                            <div class="col-sm-4"></div> 
+                            
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="baseOperator">Base:</label>
+                                    <input class="form-control" type="number" id="baseOperator" min="2" max="64">
+                                </div>
+                
+                                <div class="form-group">
+                                    <button class="btn btn-info" id="submit">Submit</button>
+                                </div>
+                            </div>
+        
+                            <div class="col-sm-4"></div> 
+                        </div>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="value1">Value:</label>
-                            <input type="text" class="form-control" id="value1">
-                        </div>
-                    </div>
+                    <div id="conversion" class="container tab-pane fade"><br>
+                        <div class="row">
+                   
+                            <div class="col-sm">
         
-                    <div class="col-sm">
-        
-                        <div class="form-group">
-                            <label for="operators">Operator:</label>
-                    
-                            <select id="operators" class="form-control">
-                                <option value="+" selected="selected">+</option>
-                                <option value="-">-</option>
-                                <option value="*">*</option>
-                                <option value="/">/</option>
-                            </select>
-                        </div>
-                    </div>
-        
-                    <div class="col-sm">
-                        <div class="form-group">
-                            <label for="value2">Value:</label>
-                            <input type="text" class="form-control" id="value2">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4"></div> 
-                    
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="baseOperator">Base:</label>
-                            <input class="form-control" type="number" id="baseOperator" min="2" max="64">
+                                <div class="form-group">
+                                    <label for="base1">Base of value:</label>
+                                    <input type="number" class="form-control" id="base1" min="2" max="64">
+                                </div>
+                            </div>
+                
+                            <div class="col-sm">
+                                
+                                <h3 class="text-center display-4">-></h3>                               
+                            </div>
+                
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    <label for="base2">Base of conversion:</label>
+                                    <input type="number" class="form-control" id="base2" min="2" max="64">
+                                </div>
+                            </div>
                         </div>
         
-                        <div class="form-group">
-                            <button class="btn btn-info" id="submit">Submit</button>
+                        <div class="row">
+                            <div class="col-sm-4"></div> 
+                            
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="value">Input:</label>
+                                    <input class="form-control" type="number" id="value">
+                                </div>
+                
+                                <div class="form-group">
+                                    <button class="btn btn-info" id="submitConversion">Submit</button>
+                                </div>
+                            </div>
+        
+                            <div class="col-sm-4"></div> 
                         </div>
                     </div>
-
-                    <div class="col-sm-4"></div> 
                 </div>
 
             </div>
