@@ -23,7 +23,7 @@ const onSubmit = () => {
             result = numberSubtraction(value1, value2, base);
             break;
         case "/":
-            result = numberDivision(input1, input2, base);
+            result = numberDivision(value1, value2, base);
             break;
         case "*":
             result = multi(value1, value2, base);
