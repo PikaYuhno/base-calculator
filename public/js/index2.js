@@ -6,6 +6,8 @@ import { baseToNumber, numberToBase } from "./baseConverter.js";
 
 document.getElementById("submit").addEventListener("click", onSubmit());
 
+document.getElementById("submitConversion").addEventListener("click", onConversion());
+
 const onSubmit = () => {
     let value1 = document.getElementById("value1").value;
     let value2 = document.getElementById("value2").value;
@@ -37,6 +39,20 @@ const onSubmit = () => {
 
     let resultdecimal = baseToNumber(result,base);
 
+    document.getElementById("BinaryResult").innerText = numberToBase(resultdecimal,2);
+    document.getElementById("OctalResult").innerText = numberToBase(resultdecimal,8);
+    document.getElementById("HexadecimalResult").innerText = numberToBase(resultdecimal,16);
+};
+
+const onConversion = () => {
+    let base1 = document.getElementById("base1").value;
+    let base2 = doucment.getElementById("base2").value;
+    let value = document.getElementById("input").value;
+
+    let resultdecimal = baseToNumber(value,base1);
+
+    document.getElementById("CustomBase").innerText = base2;
+    document.getElementById("CustomResult").innerText = numberToBase(resultdecimal,base2);
     document.getElementById("BinaryResult").innerText = numberToBase(resultdecimal,2);
     document.getElementById("OctalResult").innerText = numberToBase(resultdecimal,8);
     document.getElementById("HexadecimalResult").innerText = numberToBase(resultdecimal,16);
