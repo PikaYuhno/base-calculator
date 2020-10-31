@@ -55,4 +55,5 @@ export const multi = (input1, input2, base) => {
         "Final Result:",
         (parseInt(res, base) / base ** shiftNumber).toString(base).toUpperCase()
     );
+    return (parseInt(res, base) / base ** shiftNumber).toString(base).toUpperCase();
 };

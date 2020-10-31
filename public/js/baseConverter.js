@@ -28,7 +28,7 @@ export const baseToNumber = (input, base) => {
  * @param {number} input - The input number.
  * @param {number} base - The base.
  */
-const numberToBase = (input, base) => {
+export const numberToBase = (input, base) => {
     let characteristicPart = Math.floor(input);
     let mantissaPart = input - Math.floor(input);
 

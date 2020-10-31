@@ -1,4 +1,6 @@
 import { map } from "./bases.js";
+import { numberSubtraction } from "./subs.js";
+import { numberAddition } from "./add.js";
 
 export const numberDivision = (input1, input2, base) => {
     if (parseFloat(input2) == 1) {
@@ -13,7 +15,7 @@ export const numberDivision = (input1, input2, base) => {
     var b = false;
 
     var comma = false;
-    while (!b && i < 10) {
+    while (!b && i < 5) {
         if (i < input1.length) {
             if (input1[i] == ".") {
                 result += ".";
@@ -34,6 +36,7 @@ export const numberDivision = (input1, input2, base) => {
             number += "" + 0;
         }
 
+
         if (
             number == isBigger(number, input2) ||
             0 == isBigger(number, input2)
@@ -50,13 +53,14 @@ export const numberDivision = (input1, input2, base) => {
             if (0 == isBigger(number, divisor)) {
                 number = numberSubtraction(number, divisor, base);
 
-                b = true;
+                b = i>input1.length ? true : false;
             } else {
                 number = numberSubtraction(number, previous, base);
 
                 a--;
             }
             number = "" + parseFloat(number);
+
 
             result += "" + a;
         }
@@ -68,6 +72,9 @@ export const numberDivision = (input1, input2, base) => {
 };
 
 const isBigger = (input1, input2) => {
+
+    input1 ="" + parseFloat(input1);
+
     if (input1.length == input2.length) {
         for (var i = 0; i < input1.length; i++) {
             if (input1[i] != input2[i]) {
