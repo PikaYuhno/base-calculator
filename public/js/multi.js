@@ -1,6 +1,6 @@
 import { addition } from "./add.js";
 import { map } from "./bases.js";
-import { baseToNumber } from "./baseConverter";
+import { baseToNumber } from "./baseConverter.js";
 
 export const multi = (input1, input2, base) => {
     let splitted1 = input1.split(".");
