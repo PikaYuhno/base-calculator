@@ -24,7 +24,7 @@ export const numberDivision = (input1, input2, base) => {
                 continue;
             }
 
-            number += "" + input1[i];
+            number = number!="0" ? number + input1[i] : input1[i];
         } else {
             if (!comma) {
                 if (result == "") {
@@ -33,9 +33,8 @@ export const numberDivision = (input1, input2, base) => {
                 result += ".";
                 comma = true;
             }
-            number += "" + 0;
+            number = number!="0" ? number + "0" : "0";
         }
-
 
         if (
             number == isBigger(number, input2) ||
@@ -53,16 +52,16 @@ export const numberDivision = (input1, input2, base) => {
             if (0 == isBigger(number, divisor)) {
                 number = numberSubtraction(number, divisor, base);
 
-                b = i>input1.length ? true : false;
+                b = i+1>=input1.length;
             } else {
                 number = numberSubtraction(number, previous, base);
 
                 a--;
             }
-            number = "" + parseFloat(number);
+            
+            number = isNaN(number) ? map[number] : parseInt(number);
 
-
-            result += "" + a;
+            result += a>9 ? map[a] : a;
         }
 
         i++;
@@ -72,8 +71,6 @@ export const numberDivision = (input1, input2, base) => {
 };
 
 const isBigger = (input1, input2) => {
-
-    input1 ="" + parseFloat(input1);
 
     if (input1.length == input2.length) {
         for (var i = 0; i < input1.length; i++) {
