@@ -4,14 +4,6 @@ import { numberDivision } from "./divi.js";
 import { multi } from "./multi.js";
 import { baseToNumber, numberToBase } from "./baseConverter.js";
 
-document.getElementById("submit").addEventListener("click", () => {
-    onSubmit();
-});
-
-document.getElementById("submitConversion").addEventListener("click", () => {
-    onConversion();
-});
-
 const onSubmit = () => {
     let value1 = document.getElementById("value1").value;
     let value2 = document.getElementById("value2").value;
@@ -85,3 +77,9 @@ const onConversion = () => {
         16
     );
 };
+
+document.getElementById("submit").addEventListener("click", onSubmit);
+
+document
+    .getElementById("submitConversion")
+    .addEventListener("click", onConversion);
