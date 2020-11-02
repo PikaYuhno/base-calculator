@@ -1,5 +1,6 @@
 import { addition } from "./add.js";
 import { map } from "./bases.js";
+import { baseToNumber } from "./baseConverter";
 
 export const multi = (input1, input2, base) => {
     let splitted1 = input1.split(".");
@@ -53,7 +54,7 @@ export const multi = (input1, input2, base) => {
     let res = addition(results, base);
     console.log(
         "Final Result:",
-        (parseInt(res, base) / base ** shiftNumber).toString(base).toUpperCase()
+        baseToNumber(res, base) / base ** shiftNumber
     );
-    return (parseInt(res, base) / base ** shiftNumber).toString(base).toUpperCase();
+    return baseToNumber(res, base) / base ** shiftNumber;
 };
