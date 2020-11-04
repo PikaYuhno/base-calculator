@@ -3,12 +3,18 @@ import { numberSubtraction } from "./subs.js";
 import { numberDivision } from "./divi.js";
 import { multi } from "./multi.js";
 import { baseToNumber, numberToBase } from "./baseConverter.js";
+import { map } from "./bases.js";
 
 const onSubmit = () => {
     let value1 = document.getElementById("value1").value;
     let value2 = document.getElementById("value2").value;
     let operator = document.getElementById("operators").value;
     let base = document.getElementById("baseOperator").value;
+
+    if(checkBases(value1,base) || checkBases(value2,base)){
+        alert("Die eingegebene Zahl ist nicht enhalten in der Basis!");
+        return;
+    }
 
     console.log(value1);
 
@@ -50,12 +56,26 @@ const onSubmit = () => {
     );
 };
 
+function checkBases(value , base){
+    for(var i=0;i<value.length;i++){
+        var letter = isNaN(value[i]) ? map[value[i]] : value[i];
+        if(letter > base){
+            return true;
+        }
+    }
+    return false;
+}
+
 const onConversion = () => {
     let base1 = document.getElementById("base1").value;
     let base2 = document.getElementById("base2").value;
     let value = document.getElementById("value").value;
 
-    console.log("VALUE", value);
+    if(checkBases(value,base1)){
+        alert("Die eingegebene Zahl ist nicht enhalten in der Basis!");
+        return;
+    }
+    
     let resultdecimal = baseToNumber(value, base1);
 
     document.getElementById("CustomBase").innerText = base2;
