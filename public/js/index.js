@@ -58,8 +58,14 @@ const onSubmit = () => {
 
 function checkBases(value , base){
     for(var i=0;i<value.length;i++){
+        if(value[i]=="."){
+            i++;
+            continue;
+        }
+
         var letter = isNaN(value[i]) ? map[value[i]] : value[i];
         if(letter > base){
+            console.log(i);
             return true;
         }
     }
