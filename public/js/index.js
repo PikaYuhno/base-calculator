@@ -64,7 +64,7 @@ function checkBases(value , base){
         }
 
         var letter = isNaN(value[i]) ? map[value[i]] : value[i];
-        if(letter > base){
+        if(letter > parseInt(base)){
             console.log(i);
             return true;
         }
