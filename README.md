@@ -1,7 +1,2 @@
 # computer-arithmetik
-
-### TODO
-
-- [ ] `Design bro`
-- [ ] `Backend js`
-
+This is a simple base calculator that can convert all bases from 2 to 64 and vice versa. It also can do basic arithmetic.
